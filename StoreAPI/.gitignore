@@ -1,0 +1,8 @@
+eb-flask/__pycache__/
+__pycache__/
+
+assets/img/out/sample-out.jpg
+
+env_var.env
+
+.vscode/
