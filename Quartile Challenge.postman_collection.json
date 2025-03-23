@@ -79,7 +79,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Quartile\",\n    \"document_number\": \"DOC23456755\",\n    \"country\": \"United States\",\n    \"address\": \"123 Avenue, New York\",\n    \"contact_email\": \"contact@quartie.com\",\n    \"contact_phone\": \"+1 234 567 8900\"\n  }",
+									"raw": "{\n    \"name\": \"Loja Quartile\",\n    \"city\": \"New York\",\n    \"state\": \"New York\",\n    \"address\": \"123 Avenue, New York\",\n    \"postal_code\": \"WD 2342\",\n    \"phone\": \"+1 234 567 8900\",\n    \"company_id\": 10\n  }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -87,13 +87,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/api/companies",
+									"raw": "{{base_url}}/api/stores",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"api",
-										"companies"
+										"stores"
 									]
 								},
 								"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
@@ -122,7 +122,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"name\": \"Updated name\"\n}",
+									"raw": "{\n\t\"name\": \"Loja camaleão dourado\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -130,14 +130,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{local_base_url}}/api/companies/2",
+									"raw": "{{base_url}}/api/stores/6",
 									"host": [
-										"{{local_base_url}}"
+										"{{base_url}}"
 									],
 									"path": [
 										"api",
-										"companies",
-										"2"
+										"stores",
+										"6"
 									]
 								},
 								"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
@@ -156,7 +156,8 @@
 											"});",
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -173,18 +174,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/info?id=1",
+									"raw": "{{base_url}}/api/stores/3",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"info"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "1"
-										}
+										"api",
+										"stores",
+										"3"
 									]
 								},
 								"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
@@ -340,7 +337,8 @@
 											"});",
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -357,18 +355,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/info?id=1",
+									"raw": "{{base_url}}/api/companies/4",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"info"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "1"
-										}
+										"api",
+										"companies",
+										"4"
 									]
 								},
 								"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
@@ -475,10 +469,10 @@
 			"name": "C# Fuctions - Products API",
 			"item": [
 				{
-					"name": "Store",
+					"name": "Products",
 					"item": [
 						{
-							"name": "GET Stores",
+							"name": "GET Products",
 							"event": [
 								{
 									"listen": "test",
@@ -508,13 +502,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/api/stores",
+									"raw": "{{base_functions_url}}/api/products",
 									"host": [
-										"{{base_url}}"
+										"{{base_functions_url}}"
 									],
 									"path": [
 										"api",
-										"stores"
+										"products"
 									]
 								},
 								"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -522,7 +516,7 @@
 							"response": []
 						},
 						{
-							"name": "POST Store",
+							"name": "POST Product",
 							"event": [
 								{
 									"listen": "test",
@@ -551,13 +545,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/api/companies",
+									"raw": "{{base_functions_url}}/api/products",
 									"host": [
-										"{{base_url}}"
+										"{{base_functions_url}}"
 									],
 									"path": [
 										"api",
-										"companies"
+										"products"
 									]
 								},
 								"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
@@ -565,7 +559,7 @@
 							"response": []
 						},
 						{
-							"name": "PUT Store",
+							"name": "PUT Products",
 							"event": [
 								{
 									"listen": "test",
@@ -594,13 +588,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{local_base_url}}/api/companies/2",
+									"raw": "{{base_functions_url}}/api/products/2",
 									"host": [
-										"{{local_base_url}}"
+										"{{base_functions_url}}"
 									],
 									"path": [
 										"api",
-										"companies",
+										"products",
 										"2"
 									]
 								},
@@ -609,7 +603,7 @@
 							"response": []
 						},
 						{
-							"name": "DELETE Store",
+							"name": "DELETE Products",
 							"event": [
 								{
 									"listen": "test",
@@ -620,7 +614,8 @@
 											"});",
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -637,18 +632,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/info?id=1",
+									"raw": "{{base_functions_url}}/api/products",
 									"host": [
-										"{{base_url}}"
+										"{{base_functions_url}}"
 									],
 									"path": [
-										"info"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "1"
-										}
+										"api",
+										"products"
 									]
 								},
 								"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
@@ -656,7 +646,7 @@
 							"response": []
 						},
 						{
-							"name": "GET Store by id",
+							"name": "GET Product by id",
 							"event": [
 								{
 									"listen": "test",
@@ -686,13 +676,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{base_url}}/api/stores/6",
+									"raw": "{{base_functions_url}}/api/products/6",
 									"host": [
-										"{{base_url}}"
+										"{{base_functions_url}}"
 									],
 									"path": [
 										"api",
-										"stores",
+										"products",
 										"6"
 									]
 								},
@@ -738,6 +728,11 @@
 		{
 			"key": "base_url",
 			"value": "https://the-quartile-api.azurewebsites.net",
+			"type": "string"
+		},
+		{
+			"key": "base_functions_url",
+			"value": "https://quartile-func.azurewebsites.net",
 			"type": "string"
 		}
 	]
