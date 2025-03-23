@@ -15,6 +15,26 @@ This repository contains two API microservices that power the Quartile applicati
 - **StoreAPI**: https://the-quartile-api.azurewebsites.net/
 - **ProductAPI**: https://quartile-func.azurewebsites.net/ (May experience intermittent availability)
 
+## Postman Collection
+
+The repository includes a comprehensive Postman collection file (`Quartile Challenge.postman_collection.json`) that contains pre-configured requests for both APIs:
+
+- **Python API - Manage Stores**: Contains requests for the StoreAPI endpoints:
+  - Company operations (GET, POST, PUT, DELETE)
+  - Store operations (GET, POST, PUT, DELETE)
+  - Company-Store relationship operations
+
+- **C# Functions - Products API**: Contains requests for the ProductAPI endpoints:
+  - Product operations (GET, POST, PUT, DELETE)
+
+To use the collection:
+1. Import the `Quartile Challenge.postman_collection.json` file into Postman
+2. Set the environment variables:
+   - `base_url`: https://the-quartile-api.azurewebsites.net (for StoreAPI)
+   - `functions_url`: https://quartile-func.azurewebsites.net (for ProductAPI)
+
+The collection includes tests for verifying response status codes and sample request bodies for creating and updating resources.
+
 ## StoreAPI Summary
 
 The StoreAPI is a Python-based backend that provides endpoints for managing companies and their associated stores.
