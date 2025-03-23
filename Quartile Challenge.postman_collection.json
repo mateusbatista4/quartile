@@ -1,0 +1,744 @@
+{
+	"info": {
+		"_postman_id": "e80bbb8d-1a0b-48cf-ae88-e27630c986de",
+		"name": "Quartile Challenge",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10430432"
+	},
+	"item": [
+		{
+			"name": "Python API - Manage Stores",
+			"item": [
+				{
+					"name": "Store",
+					"item": [
+						{
+							"name": "GET Stores",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "page",
+										"value": "1",
+										"type": "text"
+									},
+									{
+										"key": "per_page",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/stores",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"stores"
+									]
+								},
+								"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+							},
+							"response": []
+						},
+						{
+							"name": "POST Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Quartile\",\n    \"document_number\": \"DOC23456755\",\n    \"country\": \"United States\",\n    \"address\": \"123 Avenue, New York\",\n    \"contact_email\": \"contact@quartie.com\",\n    \"contact_phone\": \"+1 234 567 8900\"\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/companies",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"companies"
+									]
+								},
+								"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "PUT Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Updated name\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local_base_url}}/api/companies/2",
+									"host": [
+										"{{local_base_url}}"
+									],
+									"path": [
+										"api",
+										"companies",
+										"2"
+									]
+								},
+								"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful DELETE request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/info?id=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"info"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								},
+								"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "GET Store by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "page",
+										"value": "1",
+										"type": "text"
+									},
+									{
+										"key": "per_page",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/stores/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"stores",
+										"6"
+									]
+								},
+								"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Company",
+					"item": [
+						{
+							"name": "GET Companies",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "page",
+										"value": "1",
+										"type": "text"
+									},
+									{
+										"key": "per_page",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/companies",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"companies"
+									]
+								},
+								"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+							},
+							"response": []
+						},
+						{
+							"name": "POST Company",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Quartile\",\n    \"document_number\": \"DOC23456755\",\n    \"country\": \"United States\",\n    \"address\": \"123 Avenue, New York\",\n    \"contact_email\": \"contact@quartie.com\",\n    \"contact_phone\": \"+1 234 567 8900\"\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/companies",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"companies"
+									]
+								},
+								"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE Company",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful DELETE request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/info?id=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"info"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								},
+								"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "GET Company by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "page",
+										"value": "1",
+										"type": "text"
+									},
+									{
+										"key": "per_page",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/companies/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"companies",
+										"4"
+									]
+								},
+								"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+							},
+							"response": []
+						},
+						{
+							"name": "GET Company's stores",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "page",
+										"value": "1",
+										"type": "text"
+									},
+									{
+										"key": "per_page",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/companies/4/stores",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"companies",
+										"4",
+										"stores"
+									]
+								},
+								"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "# Quartile API\n\nThis API serves as a backend for managing companies and their stores. It provides endpoints for CRUD operations on both companies and stores, with proper relationships between them.\n\n## Getting Started\n\n### Prerequisites\n\n- Python 3.11+\n    \n- ODBC Driver 17 for SQL Server\n    \n\n### Installation\n\n1. Clone the repository\n    \n2. Install the required dependencies:\n    \n    ```\n     pip install -r requirements.txt\n    \n     ```\n    \n\n## Running the API\n\n```\npython app.py\n\n ```\n\nThe server will start on port 5535. You can access it at [http://localhost:5535](http://localhost:5535)\n\n## Deployed API\n\nThe API is deployed and accessible at: [https://the-quartile-api.azurewebsites.net/](https://the-quartile-api.azurewebsites.net/)\n\n## API Documentation\n\nBrowse the interactive Swagger documentation at [http://localhost:5535/docs](http://localhost:5535/docs)  \nFor the deployed version: [https://the-quartile-api.azurewebsites.net/docs](https://the-quartile-api.azurewebsites.net/docs)\n\nThis provides detailed information about all endpoints, required parameters, and responses.\n\n## Base Endpoints\n\n- API Info: `GET /`\n    \n- Companies: `GET/POST /api/companies/`\n    \n- Company Detail: `GET/PUT/DELETE /api/companies/{company_id}`\n    \n- Stores: `GET/POST /api/stores/`\n    \n- Store Detail: `GET/PUT/DELETE /api/stores/{store_id}`\n    \n- Company Stores: `GET /api/companies/{company_id}/stores`\n    \n\n## Run Tests\n\n```\npython -m pytest tests/\n\n ```\n\n## Database\n\nThe API uses an Azure SQL Server database. The connection is maintained through a background thread that executes a periodic query to prevent Azure from shutting down the database due to inactivity.\n\n## Features\n\n- Full CRUD operations for companies and stores\n    \n- Relationship management between companies and their stores\n    \n- Interactive API documentation with Swagger UI\n    \n- Error handling and appropriate HTTP status codes\n    \n- CORS support"
+		},
+		{
+			"name": "C# Fuctions - Products API",
+			"item": [
+				{
+					"name": "Store",
+					"item": [
+						{
+							"name": "GET Stores",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "page",
+										"value": "1",
+										"type": "text"
+									},
+									{
+										"key": "per_page",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/stores",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"stores"
+									]
+								},
+								"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+							},
+							"response": []
+						},
+						{
+							"name": "POST Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Quartile\",\n    \"document_number\": \"DOC23456755\",\n    \"country\": \"United States\",\n    \"address\": \"123 Avenue, New York\",\n    \"contact_email\": \"contact@quartie.com\",\n    \"contact_phone\": \"+1 234 567 8900\"\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/companies",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"companies"
+									]
+								},
+								"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "PUT Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Updated name\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local_base_url}}/api/companies/2",
+									"host": [
+										"{{local_base_url}}"
+									],
+									"path": [
+										"api",
+										"companies",
+										"2"
+									]
+								},
+								"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful DELETE request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/info?id=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"info"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								},
+								"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "GET Store by id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "page",
+										"value": "1",
+										"type": "text"
+									},
+									{
+										"key": "per_page",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/stores/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"stores",
+										"6"
+									]
+								},
+								"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "# Quartile ProductAPI\n\nThis API serves as a backend for managing product data. It provides endpoints for CRUD operations on products, built as a serverless C# microservice with Azure Functions.\n\n## Deployed API\n\nThe API is deployed and should be accessible at: [https://quartile-func.azurewebsites.net/](https://quartile-func.azurewebsites.net/)  \nNote: The deployed service may experience intermittent availability due to cloud infrastructure issues.\n\n## Getting Started\n\n### Prerequisites\n\n- .NET 6.0 SDK or later\n    \n- Azure Functions Core Tools\n    \n- SQL Server (local or Azure SQL)\n    \n- ODBC Driver 17 for SQL Server\n    \n\n## Database Setup\n\nExecute the SQL script in the `Data/CreateProductsTable.sql` file to set up the required database table.\n\n## API Documentation\n\nThe API uses Swagger for documentation. When running locally, you can access it at the `/docs` endpoint.\n\n## Base Endpoints\n\n- **GET /api/products** - Get all products\n    \n- **GET /api/products/{id}** - Get a specific product by ID\n    \n- **POST /api/products** - Create a new product\n    \n- **PUT /api/products/{id}** - Update an existing product\n    \n- **DELETE /api/products/{id}** - Delete a product"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "local_base_url",
+			"value": "http://localhost:5535"
+		},
+		{
+			"key": "base_url",
+			"value": "https://the-quartile-api.azurewebsites.net",
+			"type": "string"
+		}
+	]
+}
